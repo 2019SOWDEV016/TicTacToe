@@ -62,4 +62,17 @@ public class TicTacToeTest {
 
         Assert.assertEquals("finished", gameResult);
     }
+
+    @Test
+    public void When_MinMovesAreFinished_Expect_GameResultAsNotFinished(){
+        ticTacToe.blockPosition(1, "playerX");
+        ticTacToe.blockPosition(5, "playerO");
+        ticTacToe.blockPosition(2, "playerX");
+        ticTacToe.blockPosition(3, "playerO");
+        ticTacToe.blockPosition(4, "playerX");
+
+        String gameResult = ticTacToe.checkGameResult();
+
+        Assert.assertEquals("not finished", gameResult);
+    }
 }
