@@ -36,7 +36,4 @@ public class TicTacToeTest {
         Assert.assertNotNull(playerName);
         Assert.assertEquals("playerX", playerName);
     }
-
-
-
 }
