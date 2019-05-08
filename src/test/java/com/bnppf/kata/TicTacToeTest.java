@@ -25,6 +25,18 @@ public class TicTacToeTest {
         Assert.assertEquals("playerX", playerName);
     }
 
+    @Test
+    public void When_playerOplacesAtFirstPosition_Expect_FirstPositionIsBlockedByPlayerX(){
+        ticTacToe.blockPosition(1, "playerX");
+        ticTacToe.blockPosition(1, "playerO");
+
+        Map<Integer, String> filledBlockStatusMap = ticTacToe.getPositionStatus();
+        String playerName =  filledBlockStatusMap.get(1);
+
+        Assert.assertNotNull(playerName);
+        Assert.assertEquals("playerX", playerName);
+    }
+
 
 
 }

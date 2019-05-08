@@ -8,10 +8,12 @@ public class TicTacToe {
     private Map<Integer, String> positionBlockStatusMap = new HashMap<Integer, String>();
 
     protected void blockPosition(int position, String playerName) {
-        positionBlockStatusMap.put(position, playerName);
+        if(null == positionBlockStatusMap.get(position)){
+            positionBlockStatusMap.put(position, playerName);
+        }
     }
 
-    public Map<Integer, String> getPositionStatus() {
+    protected Map<Integer, String> getPositionStatus() {
         return positionBlockStatusMap;
     }
 }
