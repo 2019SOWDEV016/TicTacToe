@@ -21,8 +21,10 @@ public class TicTacToeTest {
         Map<Integer, String> filledBlockStatusMap = ticTacToe.getPositionStatus();
         String playerName =  filledBlockStatusMap.get(1);
 
+        Assert.assertNotNull(playerName);
         Assert.assertEquals("playerX", playerName);
     }
+
 
 
 }
