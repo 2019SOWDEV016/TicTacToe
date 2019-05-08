@@ -36,4 +36,30 @@ public class TicTacToeTest {
         Assert.assertNotNull(playerName);
         Assert.assertEquals("playerX", playerName);
     }
+
+    @Test
+    public void When_playersPlaceAtAvailablePositions_Expect_CorrectPlayersNames(){
+        ticTacToe.blockPosition(1, "playerX");
+        ticTacToe.blockPosition(2, "playerO");
+        ticTacToe.blockPosition(5, "playerX");
+        ticTacToe.blockPosition(9, "playerO");
+
+        Map<Integer, String> filledBlockStatusMap = ticTacToe.getPositionStatus();
+
+        Assert.assertEquals("playerX", filledBlockStatusMap.get(5));
+        Assert.assertEquals("playerO", filledBlockStatusMap.get(2));
+    }
+
+    @Test
+    public void When_MinMovesAreFinished_Expect_GameResultAsFinished(){
+        ticTacToe.blockPosition(1, "playerX");
+        ticTacToe.blockPosition(5, "playerO");
+        ticTacToe.blockPosition(2, "playerX");
+        ticTacToe.blockPosition(9, "playerO");
+        ticTacToe.blockPosition(3, "playerX");
+
+        String gameResult = ticTacToe.checkGameResult();
+
+        Assert.assertEquals("finished", gameResult);
+    }
 }

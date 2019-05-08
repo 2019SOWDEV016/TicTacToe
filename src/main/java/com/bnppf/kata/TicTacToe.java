@@ -6,7 +6,7 @@ import java.util.Map;
 public class TicTacToe {
 
     private Map<Integer, String> positionBlockStatusMap = new HashMap<Integer, String>();
-
+    private int minMovesForGameResult = 5;
     protected void blockPosition(int position, String playerName) {
         if(isPositionAvailable((position))){
             positionBlockStatusMap.put(position, playerName);
@@ -25,4 +25,10 @@ public class TicTacToe {
     }
 
 
+    public String checkGameResult() {
+        if(positionBlockStatusMap.size() >= minMovesForGameResult){
+            return "finished";
+        }
+        return "not finished";
+    }
 }
