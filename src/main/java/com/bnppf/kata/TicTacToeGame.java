@@ -10,8 +10,9 @@ public class TicTacToeGame {
         System.out.println("Welcome to Two Player Tic Tac Toe Game...");
         System.out.println("Player 1 will always position X and Player2 will position O");
         System.out.println("Initializing the 3X3 game board....\n");
+        Scanner sc = new Scanner(System.in);
         printBoard();
-        startGame();
+        startGame(sc);
     }
 
     public static void printBoard() {
@@ -63,9 +64,8 @@ public class TicTacToeGame {
         return position;
     }
 
-    public static void startGame() {
+    public static void startGame(Scanner sc) {
         System.out.println("Lets start the game....\n");
-        Scanner sc = new Scanner(System.in);
         TicTacToe ticTacToe = new TicTacToe();
         for(int turn = 1; turn <10; turn ++){
             boolean isGameEnd = false;
