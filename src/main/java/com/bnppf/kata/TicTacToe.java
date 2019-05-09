@@ -5,7 +5,11 @@ import java.util.Map;
 
 public class TicTacToe {
 
-    private Map<Integer, String> positionBlockStatusMap = new HashMap<Integer, String>();
+    private Map<Integer, String> positionBlockStatusMap;
+
+    TicTacToe(){
+        this.positionBlockStatusMap = new HashMap<Integer, String>();
+    }
 
     protected void blockPosition(int position, String playerName) {
         if(isPositionAvailable((position))){
@@ -23,7 +27,6 @@ public class TicTacToe {
     protected Map<Integer, String> getPositionStatus() {
         return positionBlockStatusMap;
     }
-
 
     protected String checkGameResult() {
         String result;
@@ -70,7 +73,6 @@ public class TicTacToe {
                     framedString = positionBlockStatusMap.get(3)+positionBlockStatusMap.get(5)+positionBlockStatusMap.get(7);
                     break;
             }
-            System.out.println(framedString);
             if(framedString.equals("playerXplayerXplayerX") || framedString.equals("playerOplayerOplayerO")){
                 return true;
             }
