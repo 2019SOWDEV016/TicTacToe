@@ -75,4 +75,14 @@ public class TicTacToeTest {
 
         Assert.assertEquals("not finished", gameResult);
     }
+
+    @Test
+    public void When_PlayerPositionAtTen_Expect_PositionShouldNotBeFilled(){
+        ticTacToe.blockPosition(10, "playerX");
+
+        Map<Integer, String> filledBlockStatusMap = ticTacToe.getPositionStatus();
+        String playerName =  filledBlockStatusMap.get(10);
+
+        Assert.assertNull(playerName);
+    }
 }
