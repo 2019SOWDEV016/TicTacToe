@@ -1,5 +1,7 @@
 package com.bnppf.kata;
 
+import com.bnppf.kata.Util.Constants;
+
 import java.util.HashMap;
 import java.util.Map;
 
@@ -19,7 +21,7 @@ public class TicTacToe {
         return false;
     }
 
-    boolean isPositionAvailable(int position) {
+    private boolean isPositionAvailable(int position) {
         if(position >= Constants.ONE && position < Constants.TEN && null == positionBlockStatusMap.get(position)){
             return true;
         }

@@ -1,4 +1,4 @@
-package com.bnppf.kata;
+package com.bnppf.kata.Util;
 
 public interface Constants {
     String NOT_FINISHED = "not finished";
