@@ -1,5 +1,7 @@
 package com.bnppf.kata;
 
+import com.sun.xml.internal.bind.v2.runtime.reflect.opt.Const;
+
 import java.util.HashMap;
 import java.util.Map;
 
@@ -11,14 +13,16 @@ public class TicTacToe {
         this.positionBlockStatusMap = new HashMap<Integer, String>();
     }
 
-    void blockPosition(int position, String playerName) {
+    boolean blockPosition(int position, String playerName) {
         if(isPositionAvailable((position))){
             positionBlockStatusMap.put(position, playerName);
+            return true;
         }
+        return false;
     }
 
     boolean isPositionAvailable(int position) {
-        if(position >= 1 && position < 10 && null == positionBlockStatusMap.get(position)){
+        if(position >= Constants.ONE && position < Constants.TEN && null == positionBlockStatusMap.get(position)){
             return true;
         }
         return false;
@@ -32,10 +36,10 @@ public class TicTacToe {
         String status, result;
         status = Constants.NOT_FINISHED;
         int minMovesForGameResult;
-        minMovesForGameResult = 5;
+        minMovesForGameResult = Constants.FIVE;
         if(positionBlockStatusMap.size() >= minMovesForGameResult){
             result = checkWinningPatterns();
-            if(Constants.NEXT_MOVE.equals(result) && 9 == positionBlockStatusMap.size()){
+            if(Constants.NEXT_MOVE.equals(result) && Constants.NINE == positionBlockStatusMap.size()){
                 status = Constants.DRAW;
             } else if(Constants.PLAYER_X_WIN.equals(result) || Constants.PLAYER_O_WIN.equals(result)){
                 status = result;
@@ -48,7 +52,7 @@ public class TicTacToe {
 
     private String checkWinningPatterns() {
         String gameResult = Constants.NEXT_MOVE;
-        for(int patternIdx = 0; patternIdx < 8; patternIdx++){
+        for(int patternIdx = Constants.ZERO; patternIdx < Constants.EIGHT; patternIdx++){
             String framedString = "";
             switch (patternIdx){
                 case 0:
