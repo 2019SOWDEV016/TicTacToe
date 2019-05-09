@@ -18,7 +18,7 @@ public class TicTacToe {
     }
 
     protected boolean isPositionAvailable(int position) {
-        if(position < 10 && null == positionBlockStatusMap.get(position)){
+        if(position >= 1 && position < 10 && null == positionBlockStatusMap.get(position)){
             return true;
         }
         return false;

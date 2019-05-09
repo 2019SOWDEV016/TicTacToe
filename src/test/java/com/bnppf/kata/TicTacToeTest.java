@@ -85,4 +85,14 @@ public class TicTacToeTest {
 
         Assert.assertNull(playerName);
     }
+
+    @Test
+    public void When_PlayerPositionAtNonExistingBlock_Expect_PositionShouldNotBeFilled(){
+        ticTacToe.blockPosition(-1, "playerX");
+
+        Map<Integer, String> filledBlockStatusMap = ticTacToe.getPositionStatus();
+        String playerName =  filledBlockStatusMap.get(-1);
+
+        Assert.assertNull(playerName);
+    }
 }
