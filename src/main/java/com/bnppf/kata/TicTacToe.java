@@ -1,7 +1,5 @@
 package com.bnppf.kata;
 
-import com.sun.xml.internal.bind.v2.runtime.reflect.opt.Const;
-
 import java.util.HashMap;
 import java.util.Map;
 
@@ -39,15 +37,23 @@ public class TicTacToe {
         minMovesForGameResult = Constants.FIVE;
         if(positionBlockStatusMap.size() >= minMovesForGameResult){
             result = checkWinningPatterns();
-            if(Constants.NEXT_MOVE.equals(result) && Constants.NINE == positionBlockStatusMap.size()){
+            if(isItDraw(result)){
                 status = Constants.DRAW;
-            } else if(Constants.PLAYER_X_WIN.equals(result) || Constants.PLAYER_O_WIN.equals(result)){
+            } else if(isItWin(result)){
                 status = result;
             } else {
                 status = Constants.NOT_FINISHED;
             }
         }
         return status;
+    }
+
+    private boolean isItWin(String result) {
+        return Constants.PLAYER_X_WIN.equals(result) || Constants.PLAYER_O_WIN.equals(result);
+    }
+
+    private boolean isItDraw(String result) {
+        return Constants.NEXT_MOVE.equals(result) && Constants.NINE == positionBlockStatusMap.size();
     }
 
     private String checkWinningPatterns() {
