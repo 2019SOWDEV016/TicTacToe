@@ -34,7 +34,7 @@ public class TicTacToe {
         int minMovesForGameResult;
         minMovesForGameResult = 5;
         if(positionBlockStatusMap.size() >= minMovesForGameResult){
-            if(checkWinningPatterns()){
+            if(checkWinningPatterns() || 9 == positionBlockStatusMap.size()){
                 result = "finished";
             } else{
                 result = "not finished";

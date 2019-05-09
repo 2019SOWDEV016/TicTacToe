@@ -95,4 +95,21 @@ public class TicTacToeTest {
 
         Assert.assertNull(playerName);
     }
+
+    @Test
+    public void When_AllMovesAreFinished_Expect_GameResultAsFinished(){
+        ticTacToe.blockPosition(1, "playerX");
+        ticTacToe.blockPosition(2, "playerO");
+        ticTacToe.blockPosition(5, "playerX");
+        ticTacToe.blockPosition(9, "playerO");
+        ticTacToe.blockPosition(3, "playerX");
+        ticTacToe.blockPosition(7, "playerO");
+        ticTacToe.blockPosition(8, "playerX");
+        ticTacToe.blockPosition(4, "playerO");
+        ticTacToe.blockPosition(6, "playerX");
+
+        String gameResult = ticTacToe.checkGameResult();
+
+        Assert.assertEquals("finished", gameResult);
+    }
 }
