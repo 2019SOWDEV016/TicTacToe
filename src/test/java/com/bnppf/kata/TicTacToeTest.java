@@ -16,47 +16,47 @@ public class TicTacToeTest {
 
     @Test
     public void When_playerXplacesAtFirstPosition_Expect_FirstPositionIsNotAvailable(){
-        ticTacToe.blockPosition(1, "playerX");
+        ticTacToe.blockPosition(1, "X");
 
         Map<Integer, String> filledBlockStatusMap = ticTacToe.getPositionStatus();
         String playerName =  filledBlockStatusMap.get(1);
 
         Assert.assertNotNull(playerName);
-        Assert.assertEquals("playerX", playerName);
+        Assert.assertEquals("X", playerName);
     }
 
     @Test
     public void When_playerOplacesAtFirstPosition_Expect_FirstPositionIsBlockedByPlayerX(){
-        ticTacToe.blockPosition(1, "playerX");
-        ticTacToe.blockPosition(1, "playerO");
+        ticTacToe.blockPosition(1, "X");
+        ticTacToe.blockPosition(1, "O");
 
         Map<Integer, String> filledBlockStatusMap = ticTacToe.getPositionStatus();
         String playerName =  filledBlockStatusMap.get(1);
 
         Assert.assertNotNull(playerName);
-        Assert.assertEquals("playerX", playerName);
+        Assert.assertEquals("X", playerName);
     }
 
     @Test
     public void When_playersPlaceAtAvailablePositions_Expect_CorrectPlayersNames(){
-        ticTacToe.blockPosition(1, "playerX");
-        ticTacToe.blockPosition(2, "playerO");
-        ticTacToe.blockPosition(5, "playerX");
-        ticTacToe.blockPosition(9, "playerO");
+        ticTacToe.blockPosition(1, "X");
+        ticTacToe.blockPosition(2, "O");
+        ticTacToe.blockPosition(5, "X");
+        ticTacToe.blockPosition(9, "O");
 
         Map<Integer, String> filledBlockStatusMap = ticTacToe.getPositionStatus();
 
-        Assert.assertEquals("playerX", filledBlockStatusMap.get(5));
-        Assert.assertEquals("playerO", filledBlockStatusMap.get(2));
+        Assert.assertEquals("X", filledBlockStatusMap.get(5));
+        Assert.assertEquals("O", filledBlockStatusMap.get(2));
     }
 
     @Test
     public void When_MinMovesAreFinished_Expect_GameStatusAsFinished(){
-        ticTacToe.blockPosition(1, "playerX");
-        ticTacToe.blockPosition(5, "playerO");
-        ticTacToe.blockPosition(2, "playerX");
-        ticTacToe.blockPosition(9, "playerO");
-        ticTacToe.blockPosition(3, "playerX");
+        ticTacToe.blockPosition(1, "X");
+        ticTacToe.blockPosition(5, "O");
+        ticTacToe.blockPosition(2, "X");
+        ticTacToe.blockPosition(9, "O");
+        ticTacToe.blockPosition(3, "X");
 
         String gameStatus = ticTacToe.checkGameStatus();
 
@@ -65,11 +65,11 @@ public class TicTacToeTest {
 
     @Test
     public void When_MinMovesAreFinished_Expect_GameStatusAsNotFinished(){
-        ticTacToe.blockPosition(1, "playerX");
-        ticTacToe.blockPosition(5, "playerO");
-        ticTacToe.blockPosition(2, "playerX");
-        ticTacToe.blockPosition(3, "playerO");
-        ticTacToe.blockPosition(4, "playerX");
+        ticTacToe.blockPosition(1, "X");
+        ticTacToe.blockPosition(5, "O");
+        ticTacToe.blockPosition(2, "X");
+        ticTacToe.blockPosition(3, "O");
+        ticTacToe.blockPosition(4, "X");
 
         String gameStatus = ticTacToe.checkGameStatus();
 
@@ -78,7 +78,7 @@ public class TicTacToeTest {
 
     @Test
     public void When_PlayerPositionAtTen_Expect_PositionShouldNotBeFilled(){
-        ticTacToe.blockPosition(10, "playerX");
+        ticTacToe.blockPosition(10, "X");
 
         Map<Integer, String> filledBlockStatusMap = ticTacToe.getPositionStatus();
         String playerName =  filledBlockStatusMap.get(10);
@@ -88,7 +88,7 @@ public class TicTacToeTest {
 
     @Test
     public void When_PlayerPositionAtNonExistingBlock_Expect_PositionShouldNotBeFilled(){
-        ticTacToe.blockPosition(-1, "playerX");
+        ticTacToe.blockPosition(-1, "X");
 
         Map<Integer, String> filledBlockStatusMap = ticTacToe.getPositionStatus();
         String playerName =  filledBlockStatusMap.get(-1);
@@ -98,14 +98,14 @@ public class TicTacToeTest {
 
     @Test
     public void When_AllMovesAreNotFinished_Expect_GameStatusAsNotFinished(){
-        ticTacToe.blockPosition(1, "playerX");
-        ticTacToe.blockPosition(2, "playerO");
-        ticTacToe.blockPosition(5, "playerX");
-        ticTacToe.blockPosition(9, "playerO");
-        ticTacToe.blockPosition(3, "playerX");
-        ticTacToe.blockPosition(7, "playerO");
-        ticTacToe.blockPosition(8, "playerX");
-        ticTacToe.blockPosition(4, "playerO");
+        ticTacToe.blockPosition(1, "X");
+        ticTacToe.blockPosition(2, "O");
+        ticTacToe.blockPosition(5, "X");
+        ticTacToe.blockPosition(9, "O");
+        ticTacToe.blockPosition(3, "X");
+        ticTacToe.blockPosition(7, "O");
+        ticTacToe.blockPosition(8, "X");
+        ticTacToe.blockPosition(4, "O");
         //ticTacToe.blockPosition(6, "playerX");
 
         String gameStatus = ticTacToe.checkGameStatus();
@@ -115,15 +115,15 @@ public class TicTacToeTest {
 
     @Test
     public void When_AllMovesAreFinished_Expect_GameResultAsDraw(){
-        ticTacToe.blockPosition(1, "playerX");
-        ticTacToe.blockPosition(2, "playerO");
-        ticTacToe.blockPosition(5, "playerX");
-        ticTacToe.blockPosition(9, "playerO");
-        ticTacToe.blockPosition(3, "playerX");
-        ticTacToe.blockPosition(7, "playerO");
-        ticTacToe.blockPosition(8, "playerX");
-        ticTacToe.blockPosition(4, "playerO");
-        ticTacToe.blockPosition(6, "playerX");
+        ticTacToe.blockPosition(1, "X");
+        ticTacToe.blockPosition(2, "O");
+        ticTacToe.blockPosition(5, "X");
+        ticTacToe.blockPosition(9, "O");
+        ticTacToe.blockPosition(3, "X");
+        ticTacToe.blockPosition(7, "O");
+        ticTacToe.blockPosition(8, "X");
+        ticTacToe.blockPosition(4, "O");
+        ticTacToe.blockPosition(6, "X");
 
         String gameStatus = ticTacToe.checkGameStatus();
 
@@ -132,12 +132,12 @@ public class TicTacToeTest {
 
     @Test
     public void When_PlayerOplacesAtWinPostions_Expect_WinnerPlayerO(){
-        ticTacToe.blockPosition(1, "playerX");
-        ticTacToe.blockPosition(7, "playerO");
-        ticTacToe.blockPosition(2, "playerX");
-        ticTacToe.blockPosition(3, "playerO");
-        ticTacToe.blockPosition(4, "playerX");
-        ticTacToe.blockPosition(5, "playerO");
+        ticTacToe.blockPosition(1, "X");
+        ticTacToe.blockPosition(7, "O");
+        ticTacToe.blockPosition(2, "X");
+        ticTacToe.blockPosition(3, "O");
+        ticTacToe.blockPosition(4, "X");
+        ticTacToe.blockPosition(5, "O");
 
         String gameStatus = ticTacToe.checkGameStatus();
 

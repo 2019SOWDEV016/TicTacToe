@@ -77,11 +77,11 @@ public class TicTacToe {
                     framedString = positionBlockStatusMap.get(3)+positionBlockStatusMap.get(5)+positionBlockStatusMap.get(7);
                     break;
             }
-            if(framedString.equals("playerXplayerXplayerX")){
+            if(framedString.equals("XXX")){
                 gameResult = "playerX Win";
                 break;
             }
-            if(framedString.equals("playerOplayerOplayerO")){
+            if(framedString.equals("OOO")){
                 gameResult = "playerO Win";
                 break;
             }
