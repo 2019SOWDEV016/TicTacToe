@@ -106,7 +106,6 @@ public class TicTacToeTest {
         ticTacToe.blockPosition(7, "O");
         ticTacToe.blockPosition(8, "X");
         ticTacToe.blockPosition(4, "O");
-        //ticTacToe.blockPosition(6, "playerX");
 
         String gameStatus = ticTacToe.checkGameStatus();
 
