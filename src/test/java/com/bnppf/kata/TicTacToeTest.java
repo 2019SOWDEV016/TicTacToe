@@ -51,29 +51,29 @@ public class TicTacToeTest {
     }
 
     @Test
-    public void When_MinMovesAreFinished_Expect_GameResultAsFinished(){
+    public void When_MinMovesAreFinished_Expect_GameStatusAsFinished(){
         ticTacToe.blockPosition(1, "playerX");
         ticTacToe.blockPosition(5, "playerO");
         ticTacToe.blockPosition(2, "playerX");
         ticTacToe.blockPosition(9, "playerO");
         ticTacToe.blockPosition(3, "playerX");
 
-        String gameResult = ticTacToe.checkGameResult();
+        String gameStatus = ticTacToe.checkGameStatus();
 
-        Assert.assertEquals("finished", gameResult);
+        Assert.assertEquals("finished", gameStatus);
     }
 
     @Test
-    public void When_MinMovesAreFinished_Expect_GameResultAsNotFinished(){
+    public void When_MinMovesAreFinished_Expect_GameStatusAsNotFinished(){
         ticTacToe.blockPosition(1, "playerX");
         ticTacToe.blockPosition(5, "playerO");
         ticTacToe.blockPosition(2, "playerX");
         ticTacToe.blockPosition(3, "playerO");
         ticTacToe.blockPosition(4, "playerX");
 
-        String gameResult = ticTacToe.checkGameResult();
+        String gameStatus = ticTacToe.checkGameStatus();
 
-        Assert.assertEquals("not finished", gameResult);
+        Assert.assertEquals("not finished", gameStatus);
     }
 
     @Test
@@ -97,7 +97,7 @@ public class TicTacToeTest {
     }
 
     @Test
-    public void When_AllMovesAreFinished_Expect_GameResultAsFinished(){
+    public void When_AllMovesAreFinished_Expect_GameStatusAsFinished(){
         ticTacToe.blockPosition(1, "playerX");
         ticTacToe.blockPosition(2, "playerO");
         ticTacToe.blockPosition(5, "playerX");
@@ -108,8 +108,8 @@ public class TicTacToeTest {
         ticTacToe.blockPosition(4, "playerO");
         ticTacToe.blockPosition(6, "playerX");
 
-        String gameResult = ticTacToe.checkGameResult();
+        String gameStatus = ticTacToe.checkGameStatus();
 
-        Assert.assertEquals("finished", gameResult);
+        Assert.assertEquals("finished", gameStatus);
     }
 }

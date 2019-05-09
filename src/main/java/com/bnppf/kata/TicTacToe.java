@@ -28,19 +28,19 @@ public class TicTacToe {
         return positionBlockStatusMap;
     }
 
-    protected String checkGameResult() {
-        String result;
-        result = "not finished";
+    protected String checkGameStatus() {
+        String status;
+        status = "not finished";
         int minMovesForGameResult;
         minMovesForGameResult = 5;
         if(positionBlockStatusMap.size() >= minMovesForGameResult){
             if(checkWinningPatterns() || 9 == positionBlockStatusMap.size()){
-                result = "finished";
+                status = "finished";
             } else{
-                result = "not finished";
+                status = "not finished";
             }
         }
-        return result;
+        return status;
     }
 
     protected boolean checkWinningPatterns() {
