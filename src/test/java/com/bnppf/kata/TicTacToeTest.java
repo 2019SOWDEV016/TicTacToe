@@ -18,7 +18,7 @@ public class TicTacToeTest {
     public void When_playerXplacesAtFirstPosition_Expect_FirstPositionIsNotAvailable(){
         ticTacToe.blockPosition(1, "X");
 
-        Map<Integer, String> filledBlockStatusMap = ticTacToe.getPositionStatus();
+        Map<Integer, String> filledBlockStatusMap = ticTacToe.getBoardStatus();
         String playerName =  filledBlockStatusMap.get(1);
 
         Assert.assertNotNull(playerName);
@@ -30,7 +30,7 @@ public class TicTacToeTest {
         ticTacToe.blockPosition(1, "X");
         ticTacToe.blockPosition(1, "O");
 
-        Map<Integer, String> filledBlockStatusMap = ticTacToe.getPositionStatus();
+        Map<Integer, String> filledBlockStatusMap = ticTacToe.getBoardStatus();
         String playerName =  filledBlockStatusMap.get(1);
 
         Assert.assertNotNull(playerName);
@@ -44,7 +44,7 @@ public class TicTacToeTest {
         ticTacToe.blockPosition(5, "X");
         ticTacToe.blockPosition(9, "O");
 
-        Map<Integer, String> filledBlockStatusMap = ticTacToe.getPositionStatus();
+        Map<Integer, String> filledBlockStatusMap = ticTacToe.getBoardStatus();
 
         Assert.assertEquals("X", filledBlockStatusMap.get(5));
         Assert.assertEquals("O", filledBlockStatusMap.get(2));
@@ -80,7 +80,7 @@ public class TicTacToeTest {
     public void When_PlayerPositionAtTen_Expect_PositionShouldNotBeFilled(){
         ticTacToe.blockPosition(10, "X");
 
-        Map<Integer, String> filledBlockStatusMap = ticTacToe.getPositionStatus();
+        Map<Integer, String> filledBlockStatusMap = ticTacToe.getBoardStatus();
         String playerName =  filledBlockStatusMap.get(10);
 
         Assert.assertNull(playerName);
@@ -90,7 +90,7 @@ public class TicTacToeTest {
     public void When_PlayerPositionAtNonExistingBlock_Expect_PositionShouldNotBeFilled(){
         ticTacToe.blockPosition(-1, "X");
 
-        Map<Integer, String> filledBlockStatusMap = ticTacToe.getPositionStatus();
+        Map<Integer, String> filledBlockStatusMap = ticTacToe.getBoardStatus();
         String playerName =  filledBlockStatusMap.get(-1);
 
         Assert.assertNull(playerName);

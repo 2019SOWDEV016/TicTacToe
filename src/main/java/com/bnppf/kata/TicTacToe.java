@@ -11,34 +11,33 @@ public class TicTacToe {
         this.positionBlockStatusMap = new HashMap<Integer, String>();
     }
 
-    protected void blockPosition(int position, String playerName) {
+    void blockPosition(int position, String playerName) {
         if(isPositionAvailable((position))){
             positionBlockStatusMap.put(position, playerName);
         }
     }
 
-    protected boolean isPositionAvailable(int position) {
+    boolean isPositionAvailable(int position) {
         if(position >= 1 && position < 10 && null == positionBlockStatusMap.get(position)){
             return true;
         }
         return false;
     }
 
-    protected Map<Integer, String> getPositionStatus() {
+    Map<Integer, String> getBoardStatus() {
         return positionBlockStatusMap;
     }
 
-    protected String checkGameStatus() {
+    String checkGameStatus() {
         String status, result;
         status = "not finished";
-        result = "next move";
         int minMovesForGameResult;
         minMovesForGameResult = 5;
         if(positionBlockStatusMap.size() >= minMovesForGameResult){
             result = checkWinningPatterns();
-            if("next move".equalsIgnoreCase(result) && 9 == positionBlockStatusMap.size()){
+            if("next move".equals(result) && 9 == positionBlockStatusMap.size()){
                 status = "draw";
-            } else if("playerX Win".equalsIgnoreCase(result) || "playerO Win".equalsIgnoreCase(result)){
+            } else if("playerX Win".equals(result) || "playerO Win".equals(result)){
                 status = result;
             } else {
                 status = "not finished";
@@ -47,7 +46,7 @@ public class TicTacToe {
         return status;
     }
 
-    protected String checkWinningPatterns() {
+    private String checkWinningPatterns() {
         String gameResult = "next move";
         for(int patternIdx = 0; patternIdx < 8; patternIdx++){
             String framedString = "";
