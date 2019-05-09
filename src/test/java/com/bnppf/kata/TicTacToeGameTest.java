@@ -13,11 +13,6 @@ public class TicTacToeGameTest {
     }
 
     @Test
-    public void test_main(){
-        TicTacToeGame.main(new String[]{"test1", "test2"});
-    }
-
-    @Test
     public void test_When_NoPositions_Expect_EmptyGameBoard(){
         ticTacToeGame.printBoard();
     }

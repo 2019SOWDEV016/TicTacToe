@@ -1,10 +1,17 @@
 package com.bnppf.kata;
 
 import java.util.Map;
+import java.util.Scanner;
 
 public class TicTacToeGame {
-    public static void main(String[] args) {
 
+    private static boolean isGameEnd = false;
+    public static void main(String[] args) {
+        System.out.println("Welcome to Two Player Tic Tac Toe Game...");
+        System.out.println("Player 1 will always position X and Player2 will position O");
+        System.out.println("Initializing the 3X3 game board....\n");
+        printBoard();
+        startGame();
     }
 
     public static void printBoard() {
@@ -38,7 +45,7 @@ public class TicTacToeGame {
         System.out.println("+---+---+---+");
     }
 
-    public void placeMark(TicTacToe ticTacToe, int position, String mark) {
+    public static int placeMark(TicTacToe ticTacToe, int position, String mark) {
         if(ticTacToe.blockPosition(position, mark)){
             String gameStatus = ticTacToe.checkGameStatus();
             if("not finished".equals(gameStatus)){
@@ -46,10 +53,47 @@ public class TicTacToeGame {
             } else{
                 printBoard(ticTacToe);
                 System.out.println("Final Game Result is ----> "+gameStatus);
+                isGameEnd = true;
             }
         } else{
+            position = -1;
             System.out.println("\n Attention! Please choose a valid position to place "+mark+"\n");
             printBoard(ticTacToe);
         }
+        return position;
+    }
+
+    public static void startGame() {
+        System.out.println("Lets start the game....\n");
+        Scanner sc = new Scanner(System.in);
+        TicTacToe ticTacToe = new TicTacToe();
+        for(int turn = 1; turn <10; turn ++){
+            boolean isGameEnd = false;
+            if(turn%2 == 1){
+                System.out.println("Now its Player 1 turn to position X");
+                if(validatePosition(sc, ticTacToe,"X")){
+                    break;
+                }
+            } else {
+                System.out.println("Now its Player 2 turn to position O");
+                if(validatePosition(sc, ticTacToe, "O")){
+                    break;
+                }
+            }
+        }
+    }
+
+    private static boolean validatePosition(Scanner sc, TicTacToe ticTacToe,String mark) {
+        boolean isGameEnd = false;
+        int position = -1;
+        while(position == -1){
+            System.out.println("Please enter the position you want to place "+ mark+" : ");
+            position = sc.nextInt();
+            position = placeMark(ticTacToe, position, mark);
+            if(isGameEnd){
+                break;
+            }
+        }
+        return isGameEnd;
     }
 }
