@@ -29,22 +29,26 @@ public class TicTacToe {
     }
 
     protected String checkGameStatus() {
-        String status;
+        String status, result;
         status = "not finished";
+        result = "next move";
         int minMovesForGameResult;
         minMovesForGameResult = 5;
         if(positionBlockStatusMap.size() >= minMovesForGameResult){
-            if(checkWinningPatterns() || 9 == positionBlockStatusMap.size()){
-                status = "finished";
-            } else{
+            result = checkWinningPatterns();
+            if("next move".equalsIgnoreCase(result) && 9 == positionBlockStatusMap.size()){
+                status = "draw";
+            } else if("playerX Win".equalsIgnoreCase(result) || "playerO Win".equalsIgnoreCase(result)){
+                status = result;
+            } else {
                 status = "not finished";
             }
         }
         return status;
     }
 
-    protected boolean checkWinningPatterns() {
-
+    protected String checkWinningPatterns() {
+        String gameResult = "next move";
         for(int patternIdx = 0; patternIdx < 8; patternIdx++){
             String framedString = "";
             switch (patternIdx){
@@ -73,10 +77,15 @@ public class TicTacToe {
                     framedString = positionBlockStatusMap.get(3)+positionBlockStatusMap.get(5)+positionBlockStatusMap.get(7);
                     break;
             }
-            if(framedString.equals("playerXplayerXplayerX") || framedString.equals("playerOplayerOplayerO")){
-                return true;
+            if(framedString.equals("playerXplayerXplayerX")){
+                gameResult = "playerX Win";
+                break;
+            }
+            if(framedString.equals("playerOplayerOplayerO")){
+                gameResult = "playerO Win";
+                break;
             }
         }
-        return false;
+        return gameResult;
     }
 }

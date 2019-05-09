@@ -60,7 +60,7 @@ public class TicTacToeTest {
 
         String gameStatus = ticTacToe.checkGameStatus();
 
-        Assert.assertEquals("finished", gameStatus);
+        Assert.assertEquals("playerX Win", gameStatus);
     }
 
     @Test
@@ -97,7 +97,24 @@ public class TicTacToeTest {
     }
 
     @Test
-    public void When_AllMovesAreFinished_Expect_GameStatusAsFinished(){
+    public void When_AllMovesAreNotFinished_Expect_GameStatusAsNotFinished(){
+        ticTacToe.blockPosition(1, "playerX");
+        ticTacToe.blockPosition(2, "playerO");
+        ticTacToe.blockPosition(5, "playerX");
+        ticTacToe.blockPosition(9, "playerO");
+        ticTacToe.blockPosition(3, "playerX");
+        ticTacToe.blockPosition(7, "playerO");
+        ticTacToe.blockPosition(8, "playerX");
+        ticTacToe.blockPosition(4, "playerO");
+        //ticTacToe.blockPosition(6, "playerX");
+
+        String gameStatus = ticTacToe.checkGameStatus();
+
+        Assert.assertEquals("not finished", gameStatus);
+    }
+
+    @Test
+    public void When_AllMovesAreFinished_Expect_GameResultAsDraw(){
         ticTacToe.blockPosition(1, "playerX");
         ticTacToe.blockPosition(2, "playerO");
         ticTacToe.blockPosition(5, "playerX");
@@ -110,6 +127,6 @@ public class TicTacToeTest {
 
         String gameStatus = ticTacToe.checkGameStatus();
 
-        Assert.assertEquals("finished", gameStatus);
+        Assert.assertEquals("draw", gameStatus);
     }
 }
