@@ -129,4 +129,18 @@ public class TicTacToeTest {
 
         Assert.assertEquals("draw", gameStatus);
     }
+
+    @Test
+    public void When_PlayerOplacesAtWinPostions_Expect_WinnerPlayerO(){
+        ticTacToe.blockPosition(1, "playerX");
+        ticTacToe.blockPosition(7, "playerO");
+        ticTacToe.blockPosition(2, "playerX");
+        ticTacToe.blockPosition(3, "playerO");
+        ticTacToe.blockPosition(4, "playerX");
+        ticTacToe.blockPosition(5, "playerO");
+
+        String gameStatus = ticTacToe.checkGameStatus();
+
+        Assert.assertEquals("playerO Win", gameStatus);
+    }
 }
