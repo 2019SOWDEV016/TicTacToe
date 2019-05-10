@@ -23,3 +23,13 @@ Its a two player game who positions X's and O's alternativey on a 3X3 square mat
 - Player 1 starts first and alternatively positioning will be done by both the players
 
 ### `How to execute the application` 
+- Make sure the initial setup is done to run the MAVEN application like MAVEN_HOME and environment variable
+- Make sure git home setup is done
+- Checkout the MAVEN project from the below git repository
+   https://github.com/2019SOWDEV016/TicTacToe
+- Build the application using the below MAVEN command
+  - mvn clean install
+- Run the main method class "TicTacToeGame" to start the game
+
+#### `Additional info`
+ `Main method JAVA class test case results will be shown in the console everytime with the expected results`
