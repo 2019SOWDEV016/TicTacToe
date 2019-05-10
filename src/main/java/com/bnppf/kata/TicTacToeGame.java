@@ -84,7 +84,6 @@ public class TicTacToeGame {
     }
 
     private static boolean validatePosition(Scanner sc, TicTacToe ticTacToe,String mark) {
-        boolean isGameEnd = false;
         int position = -1;
         while(position == -1){
             System.out.println("Please enter the position you want to place "+ mark+" : ");
