@@ -2,7 +2,6 @@ package com.bnppf.kata;
 
 import org.junit.Before;
 import org.junit.Test;
-
 import java.io.ByteArrayInputStream;
 import java.util.Scanner;
 
@@ -45,8 +44,15 @@ public class TicTacToeGameTest {
     }
 
     @Test
-    public void test_startGame(){
+    public void test_When_StartGameWithGivenInput_Expect_ShowPlayerXAsWinner(){
         System.setIn(new ByteArrayInputStream("1\n2\n3\n3\n4\n5\n6\n7\n8\n9".getBytes()));
+        Scanner scanner = new Scanner(System.in);
+        ticTacToeGame.startGame(scanner);
+    }
+
+    @Test
+    public void test_When_StartGameWithGivenInput_Expect_ShowPlayerOAsWinner(){
+        System.setIn(new ByteArrayInputStream("1\n4\n2\n5\n7\n6".getBytes()));
         Scanner scanner = new Scanner(System.in);
         ticTacToeGame.startGame(scanner);
     }
